@@ -1,0 +1,85 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.ml
+    image: eupraxia-backend:latest
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    environment:
+      - MAX_MEMORY_GB=8.0
+      - BATCH_SIZE=4
+      - EVOLVE_SLEEP_SECONDS=3600
+      - ENABLE_FINE_TUNE=1
+    volumes:
+      - ./backend:/app
+      - model-cache:/app/models
+      - evolution-data:/app/evolution_data
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 6G
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: always
+
+  evolution:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile.ml
+    image: eupraxia-evolution:latest
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/app/backend
+      - model-cache:/app/models
+      - evolution-data:/app/evolution_data
+    command: python /app/backend/evolve_ai.py --continuous
+    depends_on:
+      - backend
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+    restart: always
+
+  monitoring:
+    image: prom/prometheus:latest
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    ports:
+      - "9090:9090"
+    restart: always
+
+  grafana:
+    image: grafana/grafana:latest
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - monitoring
+    restart: always
+
+volumes:
+  model-cache:
+    driver: local
+  evolution-data:
+    driver: local
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local

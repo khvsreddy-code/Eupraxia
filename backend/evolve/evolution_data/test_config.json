@@ -1,0 +1,47 @@
+"""
+Testing configuration for advanced AI system.
+"""
+
+TESTING_CONFIG = {
+    # Model Configuration
+    "model": {
+        "base_model": "mistralai/Mistral-7B-v0.1",
+        "load_in_8bit": True,
+        "batch_size": 4,
+        "max_length": 512
+    },
+    
+    # Evolution Parameters
+    "evolution": {
+        "cycle_time": 3600,  # 1 hour
+        "min_samples_per_cycle": 100,
+        "max_memory_gb": 8.0,
+        "enable_meta_learning": True,
+        "pruning_factor": 0.3
+    },
+    
+    # Advanced Features
+    "advanced": {
+        "recursive_improvement": {
+            "enabled": True,
+            "generations_per_cycle": 5,
+            "population_size": 10
+        },
+        "reasoning": {
+            "max_steps": 5,
+            "min_confidence": 0.7,
+            "enable_causal": True
+        },
+        "meta_learning": {
+            "adaptation_steps": 3,
+            "learning_rate": 1e-4
+        }
+    },
+    
+    # Memory Management
+    "memory": {
+        "cache_size_mb": 2048,
+        "cache_ttl": 86400,  # 24 hours
+        "enable_pruning": True
+    }
+}

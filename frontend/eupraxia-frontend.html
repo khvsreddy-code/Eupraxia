@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1">
+                            <title>Eupraxia-Pleroma | AI Universe</title>
+                            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                            <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+                            <style>
+                                *{margin:0;padding:0;box-sizing:border-box}
+                                :root{--bg:#000;--panel:#111;--text:#D4D4D4;--accent:#FF9900}
+                                body{font-family:'Fira Code',monospace;background:var(--bg);color:var(--text);height:100vh;overflow:hidden}
+                                #starfield{position:fixed;inset:0;z-index:0;pointer-events:none}
+                                .star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;opacity:.8}
+                                .app{position:relative;z-index:2;display:flex;flex-direction:column;height:100vh;padding:24px}
+                                .header{text-align:center;margin-bottom:18px}
+                                .logo{font-size:3rem;color:var(--accent)}
+                                .content{flex:1;display:grid;grid-template-columns:1fr 2fr 1fr;gap:16px}
+                                .panel{background:var(--panel);padding:14px;border-radius:8px}
+                                #chatMessages{height:360px;overflow:auto;padding:8px;background:#000;border-radius:6px;border:1px solid rgba(255,153,0,.06)}
+                                .chat-input{display:flex;gap:8px;margin-top:10px}
+                                #chatInput{flex:1;padding:8px;border-radius:6px;background:#0f0f0f;color:var(--text);border:1px solid #222}
+                                .stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+                                @media(max-width:900px){.content{grid-template-columns:1fr}}
+                            </style>
+                        </head>
+                        <body>
+                            <div id="starfield"></div>
+                            <div class="app">
+                                <div class="header">
+                                    <div class="logo">Eupraxia</div>
+                                    <div class="subtitle">AI Universe</div>
+                                </div>
+                                <div class="content">
+                                    <div class="panel">
+                                        <div class="panel-title">Quick Actions</div>
+                                        <div class="quick-actions">
+                                            <button onclick="quickAction('new-chat')">New Chat</button>
+                                            <button onclick="quickAction('code-assist')">Code Assist</button>
+                                        </div>
+                                    </div>
+                                    <div class="panel">
+                                        <div class="panel-title">AI Chat</div>
+                                        <div id="chatMessages" aria-live="polite"></div>
+                                        <div class="chat-input">
+                                            <textarea id="chatInput" rows="3" placeholder="Type message... (Enter to send)" onkeypress="handleKeyPress(event)"></textarea>
+                                            <button onclick="sendMessage()">Send</button>
+                                        </div>
+                                    </div>
+                                    <div class="panel">
+                                        <div class="panel-title">System</div>
+                                        <div class="stats">
+                                            <div class="stat-item"><div class="stat-label">Model Size</div><div class="stat-value">2.4 MB</div></div>
+                                            <div class="stat-item"><div class="stat-label">Active Sessions</div><div class="stat-value" id="messageCount">1</div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script>
+                                // starfield
+                                function createStarfield(){ const sf = document.getElementById('starfield'); if(!sf) return; for(let i=0;i<120;i++){const s=document.createElement('div');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.opacity=(Math.random()*0.8+0.2).toString();sf.appendChild(s);} }
+
+                                // chat
+                                let messageCount = 1;
+                                function addMessage(text, role){ const c=document.getElementById('chatMessages'); if(!c) return; const m=document.createElement('div'); m.className='message '+role; m.textContent=text; c.appendChild(m); c.scrollTop=c.scrollHeight; messageCount++; const mc=document.getElementById('messageCount'); if(mc) mc.textContent=messageCount; }
+                                function sendMessage(){ const input=document.getElementById('chatInput'); if(!input) return; const txt=input.value.trim(); if(!txt) return; addMessage(txt,'user'); input.value=''; setTimeout(()=>addMessage('Acknowledged.','assistant'),600); }
+                                function handleKeyPress(e){ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendMessage(); } }
+                                function quickAction(action){ addMessage('Quick: '+action,'user'); setTimeout(()=>addMessage('Prepared: '+action,'assistant'),400); }
+                                window.addEventListener('load', createStarfield);
+                            </script>
+                        </body>
+                        </html>

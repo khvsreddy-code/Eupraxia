@@ -1,0 +1,50 @@
+{
+    "system": {
+        "memory_limit_gb": 7,
+        "base_ram_gb": 1.5,
+        "reserved_ram_gb": 0.5
+    },
+    "evolution": {
+        "cycles_per_day": 24,
+        "min_samples_per_cycle": 100,
+        "error_weight_multiplier": 2.0,
+        "learning_rate": 2e-4,
+        "batch_size": 16,
+        "max_steps": 100,
+        "eval_frequency": 10
+    },
+    "scraping": {
+        "max_sites": 500,
+        "refresh_interval_minutes": 30,
+        "batch_size": 50,
+        "max_retries": 3
+    },
+    "knowledge_graph": {
+        "max_nodes": 1000000,
+        "max_edges": 5000000,
+        "prune_threshold": 0.3,
+        "min_entity_freq": 2
+    },
+    "critic": {
+        "threshold_score": 0.8,
+        "max_batch_size": 32,
+        "min_confidence": 0.7,
+        "analysis_depth": 3
+    },
+    "caching": {
+        "max_size_mb": 512,
+        "ttl_seconds": 3600,
+        "min_similarity": 0.8,
+        "predict_top_k": 5
+    },
+    "training": {
+        "lora_r": 8,
+        "lora_alpha": 32,
+        "lora_dropout": 0.1,
+        "warmup_steps": 100,
+        "weight_decay": 0.01,
+        "gradient_checkpointing": true,
+        "mixed_precision": "fp16",
+        "save_steps": 50
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "ragas": {
+        "metrics": [
+            "answer_relevancy",
+            "context_precision",
+            "faithfulness",
+            "answer_correctness"
+        ],
+        "num_samples": 100,
+        "batch_size": 16
+    },
+    "evolution": {
+        "min_performance_threshold": 0.7,
+        "improvement_threshold": 0.05,
+        "max_training_steps": 1000,
+        "eval_frequency": 100
+    },
+    "memory": {
+        "limit_gb": 7.5,
+        "warning_threshold": 0.8,
+        "optimization_frequency": 60
+    },
+    "monitoring": {
+        "metrics_port": 8000,
+        "log_level": "INFO",
+        "wandb_project": "evolving-rag",
+        "track_memory": true,
+        "track_performance": true
+    },
+    "inference": {
+        "providers": ["groq", "anthropic", "openai"],
+        "temperature": 0.7,
+        "max_tokens": 1024,
+        "retry_attempts": 3
+    }
+}

@@ -1,0 +1,113 @@
+version: '3.8'
+
+services:
+  load-balancer:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx-lb.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - frontend
+      - backend
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - backend
+    deploy:
+      replicas: 2
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    environment:
+      - MAX_MEMORY_GB=8.0
+      - BATCH_SIZE=4
+      - API_KEY=${API_KEY}
+      - WANDB_API_KEY=${WANDB_API_KEY}
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 6G
+    volumes:
+      - model-cache:/app/models
+      - evolution-data:/app/evolution_data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+  evolution-engine:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.ml
+    environment:
+      - WANDB_API_KEY=${WANDB_API_KEY}
+      - MAX_MEMORY_GB=8.0
+      - BATCH_SIZE=4
+      - EVOLVE_SLEEP_SECONDS=3600
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 6G
+    volumes:
+      - model-cache:/app/models
+      - evolution-data:/app/evolution_data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+  monitoring:
+    image: prom/prometheus:latest
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana:latest
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+    depends_on:
+      - monitoring
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+
+volumes:
+  model-cache:
+  evolution-data:
+  prometheus-data:
+  grafana-data:

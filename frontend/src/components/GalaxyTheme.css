@@ -1,0 +1,104 @@
+.galaxy-background {
+    background-color: #0a0a1a;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.nebula-glow {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    filter: blur(60px);
+    animation: glow 8s ease-in-out infinite alternate;
+}
+
+.nebula-glow:nth-child(1) {
+    background: radial-gradient(circle at center, #5f4bb6, #372a79, #1c1445);
+}
+
+.nebula-glow:nth-child(2) {
+    background: radial-gradient(circle at center, #b65f4b, #792a37, #451c1c);
+}
+
+@keyframes glow {
+    0% {
+        opacity: 0.1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.15;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 0.1;
+        transform: scale(1);
+    }
+}
+
+.editor-theme {
+    background: rgba(20, 20, 40, 0.6);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.text-accent {
+    color: #7c4dff;
+    text-shadow: 0 0 20px rgba(124, 77, 255, 0.3);
+}
+
+.warp-button {
+    background: linear-gradient(45deg, #4a148c, #7c4dff);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.warp-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(124, 77, 255, 0.4);
+}
+
+.warp-button:disabled {
+    background: linear-gradient(45deg, #2c2c2c, #404040);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.bg-background {
+    background-color: rgba(10, 10, 25, 0.8);
+}
+
+.text-text {
+    color: #e0e0e0;
+}
+
+.console-text {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #e0e0e0;
+}
+
+/* Additional styles for select and textarea */
+select, textarea {
+    background-color: rgba(10, 10, 25, 0.8);
+    color: #e0e0e0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+select:focus, textarea:focus {
+    outline: none;
+    border-color: #7c4dff;
+    box-shadow: 0 0 10px rgba(124, 77, 255, 0.2);
+}
