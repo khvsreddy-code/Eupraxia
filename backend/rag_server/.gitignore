@@ -1,0 +1,6 @@
+.env
+.env.local
+chroma_db/
+models/
+data/
+__pycache__/

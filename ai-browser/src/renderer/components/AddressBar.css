@@ -1,0 +1,93 @@
+.address-bar {
+  height: 40px;
+  padding: 0 8px;
+  background: #353535;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navigation-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.nav-button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: #999;
+  font-size: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.url-bar {
+  flex: 1;
+  height: 30px;
+  background: #252525;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.url-bar.focused {
+  background: #404040;
+  box-shadow: 0 0 0 2px rgba(124, 77, 255, 0.3);
+}
+
+.security-indicator {
+  color: #00ff00;
+  font-size: 14px;
+}
+
+.url-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.url-bar input::placeholder {
+  color: #666;
+}
+
+.address-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.action-button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: #999;
+  font-size: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}

@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.chat-container {
+    @apply h-[500px] overflow-y-auto;
+}
+
+.message {
+    @apply max-w-[80%] mx-2;
+}
+
+.message.user {
+    @apply ml-auto;
+}
+
+.message.assistant {
+    @apply mr-auto;
+}
+
+.message.system {
+    @apply mx-auto max-w-[90%];
+}

@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+sentence-transformers
+chromadb
+python-dotenv
+openai
+llama-cpp-python
+tqdm
+pydantic

@@ -1,0 +1,9 @@
+transformers>=4.35.2
+sentencepiece
+tokenizers
+safetensors
+accelerate>=0.20.3
+datasets>=2.10.0
+einops
+scipy
+bitsandbytes>=0.41.0

@@ -1,0 +1,65 @@
+{
+    "name": "John Doe",
+    "title": "Senior Software Engineer",
+    "summary": "Innovative software engineer with 8 years of experience in full-stack development, AI/ML, and cloud architecture.",
+    "experience": [
+        {
+            "company": "Tech Innovations Inc.",
+            "role": "Senior Software Engineer",
+            "duration": "2020-Present",
+            "highlights": [
+                "Led development of AI-powered recommendation system",
+                "Improved system performance by 40%",
+                "Mentored junior developers"
+            ]
+        },
+        {
+            "company": "Digital Solutions Ltd",
+            "role": "Software Developer",
+            "duration": "2017-2020",
+            "highlights": [
+                "Developed scalable microservices architecture",
+                "Implemented CI/CD pipeline",
+                "Reduced deployment time by 60%"
+            ]
+        }
+    ],
+    "education": [
+        {
+            "degree": "Master of Science in Computer Science",
+            "school": "Stanford University",
+            "year": "2017"
+        },
+        {
+            "degree": "Bachelor of Engineering in Software Engineering",
+            "school": "MIT",
+            "year": "2015"
+        }
+    ],
+    "skills": [
+        "Python", "JavaScript", "React", "Node.js",
+        "Docker", "Kubernetes", "AWS", "Machine Learning",
+        "System Design", "Team Leadership"
+    ],
+    "certifications": [
+        "AWS Certified Solutions Architect",
+        "Google Cloud Professional Developer",
+        "Microsoft Azure Expert"
+    ],
+    "languages": [
+        "English (Native)",
+        "Spanish (Professional)"
+    ],
+    "projects": [
+        {
+            "name": "AI Traffic Management System",
+            "description": "Developed real-time traffic optimization system using computer vision and deep learning",
+            "technologies": ["Python", "TensorFlow", "OpenCV", "AWS"]
+        },
+        {
+            "name": "Cloud-Native E-commerce Platform",
+            "description": "Built scalable microservices-based e-commerce solution",
+            "technologies": ["Node.js", "React", "MongoDB", "Docker"]
+        }
+    ]
+}

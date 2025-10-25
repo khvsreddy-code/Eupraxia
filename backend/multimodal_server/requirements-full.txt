@@ -1,0 +1,9 @@
+# Heavy / optional dependencies for local multimodal generation (large downloads)
+# Install only if you have sufficient RAM/disk or intend to run in cloud
+
+torch
+accelerate
+transformers
+safetensors
+diffusers[torch]
+xformers
