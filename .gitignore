@@ -1,0 +1,126 @@
+# Environment variables
+.env
+backend/.env
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+bin/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+.venv/
+.venv_new/
+venv/
+backend/.venv/
+backend/.venv_new/
+backend/.venv_acc_test/
+**/site-packages/
+**/lib/torch/
+**/Lib/site-packages/
+**/.venv*/
+
+# Model files and checkpoints
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.model
+*.safetensors
+backend/models/checkpoints/**/*
+backend/models/gpt2/**/*
+backend/models/smoke_test/**/*
+backend/models/lora/**/*
+backend/models/lora_test/**/*
+
+# Large data files
+*.csv
+*.json.gz
+*.parquet
+*.h5
+backend/evolution_data/**/*.obj
+backend/evolution_data/**/*.jsonl
+
+# Logs
+*.log
+logs/
+training_logs/
+lora_train_log.txt
+debug_log.txt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Temp files
+*.bak
+*.tmp
+*.temp
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+**/venv/
+**/.venv/
+**/.venv_new/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Docker
+.docker/
+
+# Model files and cache
+backend/models/
+backend/evolution_data/
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.onnx
+*.pb
+*.dll
+*.lib
+*.pyd
+*.dnnl
+*.dylib
+
+# Node modules
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+*.log
+logs/
+training_logs/
+
+# Misc
+.DS_Store
+Thumbs.db

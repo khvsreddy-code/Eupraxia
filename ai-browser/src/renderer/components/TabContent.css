@@ -1,0 +1,6 @@
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+.tab-panel.hidden { display: none; }
+.tab-panel-content { padding: 20px; color: #ccc; }
+.tab-title { font-size: 14px; margin-bottom: 8px; }
+.tab-url { font-size: 12px; }

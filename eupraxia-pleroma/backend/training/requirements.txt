@@ -1,0 +1,11 @@
+transformers>=4.35.2
+accelerate>=0.20.3
+datasets>=2.10.0
+peft>=0.4.0
+torch>=2.1.0
+bitsandbytes>=0.39.0
+sentencepiece
+tokenizers
+huggingface_hub
+einops
+scipy
