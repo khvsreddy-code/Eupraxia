@@ -1,0 +1,24 @@
+
+numpy==1.26.4
+torch==2.1.1
+sentence-transformers==2.7.0
+# Pin transformers/accelerate for PEFT/LoRA and diffusers compatibility
+transformers==4.44.2
+# peft==0.12.0  # removed for smoke-test build; train_lora.py has a fallback when PEFT is unavailable
+datasets==2.21.0
+bitsandbytes==0.43.3
+langchain==0.2.16
+duckduckgo-search
+uvicorn==0.30.6
+python-dotenv==1.0.1
+# Multimodal: diffusers, moviepy, pillow, trimesh, pyrender
+diffusers==0.27.0
+moviepy==1.0.3
+pillow==10.4.0
+trimesh==4.4.9
+pyrender==0.1.45
+accelerate==0.20.3
+requests>=2.32.2
+fastapi==0.95.2
+
+

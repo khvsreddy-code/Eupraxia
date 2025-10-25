@@ -1,0 +1,122 @@
+.key-manager {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 16px;
+  color: white;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.key-manager-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.key-manager-header h3 {
+  margin: 0;
+  font-weight: 500;
+}
+
+.key-manager-header button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px;
+  opacity: 0.7;
+}
+
+.key-manager-header button:hover {
+  opacity: 1;
+}
+
+.key-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.key-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+
+.key-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.key-status {
+  font-size: 0.9em;
+  color: #4ade80;
+}
+
+.key-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.key-actions input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 12px;
+  color: white;
+  border-radius: 4px;
+}
+
+.key-actions input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.key-actions button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.key-actions button.primary {
+  background: #3e54a3;
+  color: white;
+}
+
+.key-actions button.primary:hover {
+  background: #4a64c3;
+}
+
+.key-actions button.danger {
+  background: #dc2626;
+  color: white;
+}
+
+.key-actions button.danger:hover {
+  background: #ef4444;
+}
+
+.key-status-message {
+  margin-top: 16px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.key-status-message.success {
+  background: rgba(74, 222, 128, 0.2);
+  color: #4ade80;
+}
+
+.key-status-message.error {
+  background: rgba(220, 38, 38, 0.2);
+  color: #ef4444;
+}

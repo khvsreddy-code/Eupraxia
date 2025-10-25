@@ -1,0 +1,29 @@
+# Core ML dependencies optimized for AMD Ryzen + Radeon
+--find-links https://download.pytorch.org/whl/rocm5.6
+torch==2.1.1+rocm5.6
+transformers>=4.35.2
+tokenizers>=0.14.1
+accelerate>=0.24.1
+peft>=0.5.0
+
+# Memory optimization
+bitsandbytes>=0.41.1
+psutil>=5.9.6
+numpy>=1.24.3
+
+# Efficient data processing
+datasets>=2.14.6
+pyarrow>=14.0.1
+
+# Model optimization
+onnx>=1.15.0
+onnxruntime>=1.16.1
+optimum>=1.14.1
+
+# Monitoring and utilities
+tqdm>=4.66.1
+wandb>=0.15.12  # Optional: for experiment tracking
+tensorboard>=2.14.1
+
+# Optional: AMD ROCm specific
+torch-tensorrt  # If available for ROCm

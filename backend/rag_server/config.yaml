@@ -1,0 +1,31 @@
+# LoRA training configuration
+
+# Model settings
+base_model: meta-llama/Llama-2-7b-hf  # Base model to adapt
+tokenizer: null  # If different from base_model
+
+# LoRA hyperparameters
+lora_r: 8  # LoRA attention dimension
+lora_alpha: 32  # LoRA alpha scaling
+lora_dropout: 0.05
+target_modules:  # Model-specific target modules
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+
+# Training parameters
+batch_size: 4  # Per-device batch size
+gradient_accumulation_steps: 4  # For effective batch size of 16
+num_epochs: 3
+learning_rate: 2e-4
+max_steps: null  # If set, overrides num_epochs
+warmup_ratio: 0.03
+
+# Data & output paths
+train_data: data/train.jsonl
+val_data: data/val.jsonl  # Optional
+output_dir: results/lora_adapter
+
+# Resource limits
+max_gpu_memory: "24GiB"  # Optional memory limit per GPU

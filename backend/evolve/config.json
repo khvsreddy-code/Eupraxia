@@ -1,0 +1,14 @@
+{
+    "base_model": "meta-llama/Llama-2-7b-hf",
+    "eval_frequency": 100,
+    "memory_limit_gb": 7.5,
+    "min_performance_threshold": 0.7,
+    "max_fine_tune_steps": 1000,
+    "eval_batch_size": 16,
+    "save_dir": "evolution_data",
+    "wandb": {
+        "project": "evolving-rag",
+        "entity": null
+    },
+    "debug": false
+}

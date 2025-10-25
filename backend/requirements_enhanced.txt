@@ -1,0 +1,13 @@
+# Enhanced ML / Agent dependencies (CPU-friendly where possible)
+langchain==0.2.16
+transformers>=4.57.0
+datasets>=2.18.0
+pytorch-lightning==2.2.5
+ruff==0.4.10
+haystack-ai==2.5.0
+diffusers>=0.26.0
+accelerate>=0.27.0
+safetensors>=0.4.2
+# bitsandbytes on Windows is optional; prefer dynamic quantization on CPU
+# For faster fine-tuning (experimental): install unsloth from git
+# pip install git+https://github.com/unslothai/unsloth.git
